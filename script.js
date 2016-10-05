@@ -7,7 +7,7 @@ var generateGenresList = function(genres){
 		return "No genres listed in Spotify"
 	}
 	var genreList = "";
-	for(var i = 0; i < genres.length-1; i++){
+	for(var i = 0; i < genres.length; i++){
 		var splitGenres = genres[i].split(" ");
 		var currentGenre = [];
 		for(var j = 0; j < splitGenres.length; j++){
@@ -16,8 +16,7 @@ var generateGenresList = function(genres){
 
 		genreList = genreList + currentGenre.join(" ") +", ";
 	}
-	genreList += genres[genres.length-1];
-	return genreList;
+	return genreList.substr(0, genreList.length-2);
 }
 
 var getRelatedArtists = function(id){
@@ -27,7 +26,7 @@ var getRelatedArtists = function(id){
 		var firstFive = allRelatedArtists.length < 5 ? allRelatedArtists : allRelatedArtists.slice(0, 5);
 		var relatedArtistsHtml = '<li>Related Artists:<ul class="related-artists">';
 		for(var i = 0; i < firstFive.length; i++){
-			relatedArtistsHtml += ("<li><a href=/search.html?artist="+firstFive[i].name.replace(/ /g, '+')+">"+firstFive[i].name+"</a></li>");
+			relatedArtistsHtml += ("<li><a href=search.html?artist="+firstFive[i].name.replace(/ /g, '+')+">"+firstFive[i].name+"</a></li>");
 		}
 		relatedArtistsHtml += "</ul></li>";
 	$("#info-"+id).append(relatedArtistsHtml);

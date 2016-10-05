@@ -43,13 +43,13 @@ var searchResults = function(){
 		for(var i = 0; i < artistCount; i++){
 			console.log(searchData[i]);
 			var imageHtml = searchData[i].images.length == 0 ? "" : "<img class='artist-image' src="+searchData[i].images[0].url+">" 
-			$(".search-results").append("<div class='container'><div class='artist'><a data-toggle='collapse' href=#"+searchData[i].id+"><h3>"+searchData[i].name+"</h3>"
-				+imageHtml+"</a></div>");
+			$(".search-results").append("<div class='row'><div class='col-md-4 col-md-offset-4'><div class='artist'><a data-toggle='collapse' href=#"+searchData[i].id+"><h3>"+searchData[i].name+"</h3>"
+				+imageHtml+"</a></div></div>");
 			$('.artist').one("click", getRelatedArtists(searchData[i].id));
-			$(".search-results").append("<div id="+searchData[i].id+" class='collapse'><br><ul class='artist-info' id='info-"+searchData[i].id+"'>"
-				+"<li><iframe src='http://embed.spotify.com/?uri="+searchData[i].uri+"' width='300' height='80' frameborder='0' allowtransparency='true'></iframe></li>"
+			$(".search-results").append("<div class='row'><div class='col-md-4 col-md-offset-4'><div id="+searchData[i].id+" class='collapse'><br><ul class='artist-info' id='info-"+searchData[i].id+"'>"
+				+"<li><iframe src='https://embed.spotify.com/?uri="+searchData[i].uri+"' width='300' height='80' frameborder='0' allowtransparency='true'></iframe></li>"
 				+"<li>Genres:<br>"+ generateGenresList(searchData[i].genres)+"</li>"
-				+"</ul></div><hr>")
+				+"</ul></div></div></div><hr>")
 		}
 	});	 
 }
